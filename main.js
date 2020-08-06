@@ -56,13 +56,15 @@ let dropArea = document.getElementsByClassName('select-files')[0];
 })
 function fileInBox (event) {
 	event.preventDefault()
-	dropArea.style.borderColor = "#722";
+	dropArea.style.borderColor = "#68a";
+	dropArea.style.backgroundColor = "#d1d1d1"
 }
 
 dropArea.addEventListener('dragleave', fileOutBox, false);
 function fileOutBox(event){
 	event.preventDefault()
 	dropArea.style.borderColor = "#555";
+	dropArea.style.backgroundColor = "#f1f1f1"
 }
 
 dropArea.addEventListener('drop', handleDrop, false)
@@ -73,6 +75,7 @@ function handleDrop(event) {
 	let files = dt.files;
 	//handleFiles(files);
 	dropArea.style.borderColor = "#555";
+	dropArea.style.backgroundColor = "#f1f1f1"
 	getFiles(files);
 }
 
