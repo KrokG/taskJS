@@ -30,6 +30,7 @@ function getFiles(setFiles = 0){
 			img[countFilesAll].src = reader.result;
 			img[countFilesAll].style.opacity = "1";
 			name[countFilesAll].innerHTML = files[iteration].name;
+			name[countFilesAll].style.opacity = "1";
 		} else {
 			//console.log("er");
 			// mesage about " don't have place "
