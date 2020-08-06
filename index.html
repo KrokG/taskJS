@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="page">
+	<div draggable="true" class="select-files page__select-files" id="drop-area">
+		<div class="select-button select-files__button">
+			<input class="select-button__forms" type="file" onchange="getFiles(0)" multiple="true">
+			<div class="select-button__text">
+				Select Files
+			</div>
+		</div>
+		<div class="progress-bar select-files__progress-bar">
+			<div class="progress-bar__text" id = "barText">.</div>
+			<progress class="progress-bar__line" id="progressBar" value="0" max="100"></progress>
+		</div>
+	</div>
+
+
+	<div class="picture page__picture">
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+		<div class="picture-box picture__container">
+			<img class="picture-box__img" src="" />
+			<div class="picture-box__name"></div>
+		</div>
+
+
+
+	</div>
+
+
+
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
