@@ -1,5 +1,5 @@
 .page{
-	background: grey;
+	background: #f1f1f1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -15,6 +15,7 @@
 }
 
 .select-files__button{
+	font-family: Roboto;
 	position: relative;
 	margin: auto;
 	margin-top: 50px;
@@ -24,12 +25,17 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-width: 2px;
+	border-width: 3px;
+	border-color: #258;
+	color: #258;
 	border-style: solid;
+	border-radius: 2px;
+	font-weight: bold;
 }
 
 .select-files__button:hover{
-	border-color: #258;
+	color: white;
+	background-color: #258;
 }
 
 .select-button__forms{
@@ -62,7 +68,6 @@
 	margin-top: 40px;
 	width: 800px;
 	height: 400px;
-	background: #387;
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
@@ -71,7 +76,8 @@
 .picture__container{
 	width: 180px;
 	height: 180px;
-	background: #353;
+	background: #ddd;
+	border: solid 2px #bbb;
 }
 
 .picture-box__img{
@@ -84,7 +90,6 @@
 .picture-box__name{
 	height: 40px;
 	width: 100%;
-	background: grey;
 }
 
 

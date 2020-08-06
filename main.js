@@ -97,35 +97,10 @@ pictureBox.onmouseup = function(event){
 	if(element.className === "picture-box picture__container"){
 		if(element.firstChild.nextElementSibling.currentSrc){
 			secondFile = element;
-			console.log(element);
+			//console.log(element);
 			let c = firstFile.cloneNode(true)
 			c = secondFile.parentNode.replaceChild(c, secondFile);
 			firstFile.parentNode.replaceChild(c, firstFile);
 		}
 	}
 }
-
-
-
-
-
-//let pictureBox = document.getElementsByClassName("picture-box")
-//let firstFile,secondFile;
-// pictureBox[0].onmousedown = function(event) {
-// 	console.log("+");
-// 		this.ondragstart = function() {
-// 			return false;
-// 		}
-// 		firstFile = this;
-// }
-
-// pictureBox[1].onmouseup = function(event) {
-// 		secondFile = this;
-// 		//replacedNode = parentNode.replaceChild(newChild, oldChild);
-// 		//a = b.replaceChild(b.firstChild, a.firstChild);
-// 		//a.replaceWith(b);
-// 		let c = firstFile.cloneNode(true)
-// 		console.log(c);
-// 		c = secondFile.parentNode.replaceChild(c, secondFile);
-// 		firstFile.parentNode.replaceChild(c, firstFile);
-// }
