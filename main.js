@@ -9,6 +9,7 @@ function getFiles(setFiles = 0){
 	let barText = document.getElementById("barText");
 	//
 	//console.log(img.length);
+	let onLoadedFiles = 0;
 	//
 	let files
 	if(setFiles === 0){
@@ -18,6 +19,12 @@ function getFiles(setFiles = 0){
 		files = setFiles;
 	}
 	//
+	let filesSize = 0;
+	for (let i = 0; files.length > i; i++) {
+		filesSize += files[i].size;
+	}
+	console.log(filesSize + " - size files");
+	//
 	let reader =  new FileReader();
 	//console.log(files[0])
 	iteration = 0;
@@ -25,6 +32,8 @@ function getFiles(setFiles = 0){
 	//console.log("get files = " + countFiles)
 	reader.readAsDataURL(files[iteration]);
 	reader.onloadend = function(event){
+		onLoadedFiles += files[iteration].size;
+		console.log("size file = " + onLoadedFiles)
 		//create preview picture
 		if(countFilesAll < img.length){
 			img[countFilesAll].src = reader.result;
@@ -43,9 +52,10 @@ function getFiles(setFiles = 0){
 			reader.readAsDataURL(files[iteration]);
 		}
 	}
-
 	reader.onprogress = function(event){
-		let progress = event.loaded/event.total*100;
+		console.log(event.total);
+
+		let progress = (onLoadedFiles + event.total)/filesSize*100;
 		barText.innerHTML = Math.round(progress) + " %";
 		progressBar.value = progress;
 	}
@@ -80,7 +90,7 @@ function handleDrop(event) {
 }
 
 
-
+/*
 let pictureBox = document.getElementsByClassName("picture page__picture")[0];
 let firstFile,secondFile;
 
@@ -88,9 +98,6 @@ pictureBox.onmousedown = function(event){
 	let element = event.target.closest('div');
 	if(element.className === "picture-box picture__container"){
 		if(element.firstChild.nextElementSibling.currentSrc){
-			this.ondragstart = function() {
-				return false;
-			}
 			firstFile= element
 		}
 	}
@@ -107,4 +114,55 @@ pictureBox.onmouseup = function(event){
 			firstFile.parentNode.replaceChild(c, firstFile);
 		}
 	}
+}*/
+
+let pictureBox = document.getElementsByClassName("picture page__picture")[0];
+let firstFile,secondFile;
+let flag = true;
+pictureBox.addEventListener('dragstart', dragEl, false)
+function dragEl(event){
+	let element = event.target.closest('div');
+	if(element.className === "picture-box picture__container"){
+		if(element.firstChild.nextElementSibling.currentSrc){
+			firstFile= element;
+		}
+	}
 }
+
+pictureBox.addEventListener('dragover', dragoverEl, false)
+function dragoverEl(event){
+	event.preventDefault();
+	event.stopPropagation();
+	let element = event.target.closest('div');
+	if(element.className === "picture-box picture__container"){
+		if(element.firstChild.nextElementSibling.currentSrc){
+			if(firstFile == element){
+				flag = false;
+			} else{
+				secondFile = element;
+				flag = true;
+			}
+		}
+	}
+}
+
+
+pictureBox.addEventListener('dragleave', dragleaveEl, false)
+function dragleaveEl(event){
+	event.preventDefault()
+	let element = event.target.closest('div');
+	if(element.className === "picture-box picture__container")
+		if(element.firstChild.nextElementSibling.currentSrc)
+			flag = false;
+}
+
+pictureBox.addEventListener('drop', dropEl, false)
+function dropEl(event){
+	if(flag){
+		let buffer = firstFile.cloneNode(true)
+		buffer = secondFile.parentNode.replaceChild(buffer, secondFile);
+		firstFile.parentNode.replaceChild(buffer, firstFile);
+		flag = false;
+	}
+}
+
